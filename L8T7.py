@@ -2,6 +2,9 @@ class ComplexNumbers:
     def __init__(self, number):
         self.number = number
 
+    def __repr__(self):
+        return f'{self.number}'
+
     def real_im(self):
         im_part = []
         real = 0
@@ -17,18 +20,17 @@ class ComplexNumbers:
             real += int(i)
         for i in im_part:
             imag += int(i)
-
         return real, imag
 
     def __add__(self, other):
         real = self.real_im()[0] + other.real_im()[0]
         imag = self.real_im()[1] + other.real_im()[1]
-        return f'{real}+{imag}i'
+        return ComplexNumbers(f'{real}+{imag}i')
 
     def __mul__(self, other):
         real = self.real_im()[0] * other.real_im()[0] - self.real_im()[1] * other.real_im()[1]
         imag = self.real_im()[0] * other.real_im()[1] + self.real_im()[1] * other.real_im()[0]
-        return f'{real}+{imag}i'
+        return ComplexNumbers(f'{real}+{imag}i')
 
 
 my_number_1 = ComplexNumbers('5i')
